@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.3, 2026-10-17
+
+- `ChatRequest.Tools` and `MessageRequest.Tools` doc comments now say the API accepts up to 1000 functions, up from 350.
+- `ModelRequest.Tools` and `ModelResponse.Tools` doc comments now say the API accepts up to 1000 tools, up from 350.
+- No field, method or type changed. This is a comment-only update to the generated client.
+
 ## v0.1.2, 2026-10-17
 
 - Documentation only. The agent skill explains how to look up every endpoint, parameter and model with `go doc` or on pkg.go.dev, and declares its license.

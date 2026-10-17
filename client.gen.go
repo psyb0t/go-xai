@@ -1508,7 +1508,7 @@ type ChatRequest struct {
 	Temperature *float32    `json:"temperature,omitempty"`
 	ToolChoice  *ToolChoice `json:"tool_choice,omitempty"`
 
-	// Tools A list of tools the model may call in JSON-schema. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 350 functions are supported.
+	// Tools A list of tools the model may call in JSON-schema. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 1000 functions are supported.
 	Tools *[]Tool `json:"tools,omitempty"`
 
 	// TopLogprobs An integer between 0 and 8 specifying the number of most likely tokens to return at each token position, each with an associated log probability. logprobs must be set to true if this parameter is used. Not supported by models `grok-4.20` and newer; the field will be silently ignored if set.
@@ -3247,7 +3247,7 @@ type MessageRequest struct {
 	Temperature *float32           `json:"temperature,omitempty"`
 	ToolChoice  *MessageToolChoice `json:"tool_choice,omitempty"`
 
-	// Tools A list of tools the model may call in JSON-schema. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 350 functions are supported.
+	// Tools A list of tools the model may call in JSON-schema. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 1000 functions are supported.
 	Tools *[]MessageTools `json:"tools,omitempty"`
 
 	// TopK (Unsupported) When generating next tokens, randomly selecting the next token from the k most likely options.
@@ -3717,7 +3717,7 @@ type ModelRequest struct {
 	Text        *ModelResponseConfiguration `json:"text,omitempty"`
 	ToolChoice  *ModelToolChoice            `json:"tool_choice,omitempty"`
 
-	// Tools A list of tools the model may call in JSON-schema. Currently, only functions and web search are supported as tools. A max of 350 tools are supported.
+	// Tools A list of tools the model may call in JSON-schema. Currently, only functions and web search are supported as tools. A max of 1000 tools are supported.
 	Tools *[]ModelTool `json:"tools,omitempty"`
 
 	// TopK Top-k sampling: only the `top_k` most probable tokens are considered at each sampling step. Disabled when unset.
@@ -3812,7 +3812,7 @@ type ModelResponse struct {
 	// ToolChoice Controls which (if any) tool is called by the model. auto means the model can pick between generating a message or calling one or more tools. required means the model must call one or more tools. Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool. `none` is the default when no tools are present. `auto` is the default if tools are present.
 	ToolChoice ModelToolChoice `json:"tool_choice"`
 
-	// Tools A list of tools the model may call in JSON-schema. Currently, only functions and web search are supported as tools. A max of 350 tools are supported.
+	// Tools A list of tools the model may call in JSON-schema. Currently, only functions and web search are supported as tools. A max of 1000 tools are supported.
 	Tools []ModelTool `json:"tools"`
 
 	// TopLogprobs An integer between 0 and 8 specifying the number of most likely tokens to return at each token position.
