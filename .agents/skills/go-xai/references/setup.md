@@ -46,7 +46,7 @@ Names come from the spec's operation IDs. Each has a `...WithResponse` form, and
 | `GET` / `POST /v1/skills` | `HandleListSkillsRequest`, `HandleUploadSkillRequest` |
 | `POST /v1/documents/search` | `HandleDocumentSearchRequestV2` |
 
-The full list is in `client.gen.go` under `ClientWithResponsesInterface`.
+The table is a selection. `go doc github.com/psyb0t/go-xai ClientWithResponsesInterface` lists every method; the spec also has completions, image and video edits, file content and public URLs, model lists per modality and more.
 
 ## Responses
 

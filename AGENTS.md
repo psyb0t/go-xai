@@ -7,7 +7,7 @@ Unofficial Go client for the xAI (Grok) REST API, generated from xAI's OpenAPI d
 `make generate` runs `go generate ./...`, which follows `gen.go`:
 
 1. `scripts/fetch-spec.sh` downloads `https://docs.x.ai/openapi.json` into the gitignored `api/openapi.json`.
-2. No patch scripts: the current spec generates as is. If a future spec breaks oapi-codegen, add a jq patch script under `scripts/` and a `go:generate` line for it in `gen.go`.
+2. No patch scripts: the spec generates as is. If a future spec breaks oapi-codegen, add a jq patch script under `scripts/` and a `go:generate` line for it in `gen.go`.
 3. oapi-codegen (`go tool oapi-codegen`) reads `config.yaml` and writes `client.gen.go`: models, `Client` and `ClientWithResponses`.
 
 ## Stack
@@ -39,7 +39,7 @@ make sec       # gitleaks, govulncheck, semgrep
 
 ## Project-specific landmines
 
-- Method names come from operation IDs of the form `handle_<name>_request`, so they read `HandleModelsListRequestWithResponse`. A spec update that renames an operation ID renames the method; check the README, the skill and the tests after `make generate`.
+- Method names come from operation IDs, mostly of the form `handle_<name>_request`, so they read `HandleModelsListRequestWithResponse`. A spec update that renames an operation ID renames the method; check the README, the skill and the tests after `make generate`.
 - The spec documents only 200 bodies, so error responses are never decoded; callers read `Body`.
 - The spec lists no server. Callers pass `https://api.x.ai`.
 - CI does not run `make generate`, because the spec changes upstream. Regenerate locally and commit the result.

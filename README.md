@@ -18,7 +18,7 @@ go get github.com/psyb0t/go-xai
 
 ## Usage
 
-Every endpoint in the spec has a typed method on `ClientWithResponses`. Responses decode into `JSON200` and the other status fields.
+Every endpoint in the spec has a typed method on `ClientWithResponses`. Responses decode into `JSON200` and the other status fields. The full API, with the spec's descriptions as doc comments, is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-xai) and in `go doc github.com/psyb0t/go-xai`.
 
 ```go
 package main
@@ -54,7 +54,7 @@ func main() {
 
 The same code is in `example_test.go`, so `make test` checks that it compiles.
 
-Method names come from the spec's operation IDs, which all follow the `handle_<name>_request` pattern, so the chat endpoint is `HandleGenericCompletionRequest`, the Responses API is `HandleGenericModelRequest` and the Anthropic style messages endpoint is `HandleGenericMessagesRequest`. Union types such as chat messages and message content have `From...` and `As...` helpers, for example `Message.FromMessage2` for a user message.
+Method names come from the spec's operation IDs, which mostly follow the `handle_<name>_request` pattern, so the chat endpoint is `HandleGenericCompletionRequest`, the Responses API is `HandleGenericModelRequest` and the Anthropic style messages endpoint is `HandleGenericMessagesRequest`. Union types such as chat messages and message content have `From...` and `As...` helpers, for example `Message.FromMessage2` for a user message.
 
 ## Auth
 
