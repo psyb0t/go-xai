@@ -43,6 +43,7 @@ make sec       # gitleaks, govulncheck, semgrep
 - The spec documents only 200 bodies, so error responses are never decoded; callers read `Body`.
 - The spec lists no server. Callers pass `https://api.x.ai`.
 - CI does not run `make generate`, because the spec changes upstream. Regenerate locally and commit the result.
+- `.github/workflows/regen.yml` regenerates the client every day and releases the result. When the checks fail, Claude edits the repository to fix them, but a fix may not touch the paths listed under `fix_protected_paths` in that workflow: the workflows, the Makefile, `AGENTS.md`, `.agents/rules/`, the lint, security and spec download scripts and their configs. A problem that needs a change there fails the run and needs a manual fix.
 
 ## Rules
 

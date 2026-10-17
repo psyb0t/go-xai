@@ -2,6 +2,10 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.1, 2026-10-17
+
+- Documentation only. The README and `AGENTS.md` describe the daily regeneration workflow: what it checks, how it fixes failing checks, how it picks the next version and which paths a fix may not touch.
+
 ## v0.1.0, 2026-10-16
 
 - Added `xai`, a REST client generated with oapi-codegen from xAI's OpenAPI document (xAI's REST API, spec version 1.0.0, OpenAPI 3.1.0, from docs.x.ai). It covers all 39 paths: chat completions, the Responses API, messages, legacy completions, embeddings, tokenization, image and video generation, files, skills, document search, models and API key info.
