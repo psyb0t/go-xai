@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.5, 2026-10-22
+
+- `ImageOutput.UploadUrls` doc comment now says Azure Blob SAS URLs also get an `x-ms-blob-type: BlockBlob` header on the PUT.
+- `VideoOutput.UploadUrl` doc comment now says the URL can be an S3, GCS or Azure Blob SAS URL, and that the PUT sends `Content-Type: video/mp4` plus `x-ms-blob-type: BlockBlob` for Azure Blob Storage hosts.
+- `ModelResponse.Temperature` doc comment now says the value is echoed from the request or is the model's default, and that a sent value above 1 is echoed but sampled as 1.
+- `ModelResponse.TopP` doc comment now says the value is echoed from the request or is the model's default, and that a higher sent value is sampled as that default.
+- No field, method or type changed. The generated client changes are comment-only.
+
 ## v0.1.4, 2026-10-21
 
 - `ChatRequest.Guidelines` and `ModelRequest.Guidelines` doc comments now say a request whose guidelines cannot be applied, for example on a multi-agent model or with `stop`, fails with 400.

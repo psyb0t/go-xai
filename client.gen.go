@@ -2636,7 +2636,8 @@ type ImageOutput struct {
 	// image: the list length must equal `n` (default 1). Each PUT sends a
 	// `Content-Type` equal to the image's `mime_type` in the response
 	// (`image/jpeg` unless the requested quality produces PNG), so sign the
-	// URL for that type or without a Content-Type constraint.
+	// URL for that type or without a Content-Type constraint. Azure Blob SAS
+	// URLs also get `x-ms-blob-type: BlockBlob`.
 	UploadUrls []string `json:"upload_urls"`
 }
 
@@ -3807,7 +3808,7 @@ type ModelResponse struct {
 	// Store Whether to store the input message(s) and model response for later retrieval.
 	Store bool `json:"store"`
 
-	// Temperature What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
+	// Temperature Sampling temperature echoed from the request, or the model's default when the request omits it. Between 0 and 2. Sampling uses at most 1, so a sent value above 1 is echoed here and sampled as 1.
 	Temperature *float32 `json:"temperature,omitempty"`
 
 	// Text Settings for customizing a text response from the model.
@@ -3822,7 +3823,7 @@ type ModelResponse struct {
 	// TopLogprobs An integer between 0 and 8 specifying the number of most likely tokens to return at each token position.
 	TopLogprobs int32 `json:"top_logprobs"`
 
-	// TopP An alternative to sampling with `temperature`, called nucleus sampling, where the model considers the results of the tokens with `top_p` probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. It is generally recommended to alter this or `temperature` but not both.
+	// TopP Nucleus sampling `top_p` echoed from the request, or the model's default when the request omits it. Sampling uses at most the model's default `top_p`, so a higher sent value is echoed here and sampled as that default.
 	TopP *float32 `json:"top_p,omitempty"`
 
 	// Truncation The truncation strategy to use for the model response.
@@ -5229,7 +5230,10 @@ type VideoKeyframe struct {
 
 // VideoOutput Output destination for generated video.
 type VideoOutput struct {
-	// UploadUrl Signed URL to upload the generated video via HTTP PUT.
+	// UploadUrl Signed URL to upload the generated video via HTTP PUT, e.g. an S3 / GCS
+	// presigned URL or an Azure Blob SAS URL. The PUT sends
+	// `Content-Type: video/mp4`, plus `x-ms-blob-type: BlockBlob` for Azure
+	// Blob Storage hosts.
 	UploadUrl string `json:"upload_url"`
 }
 
