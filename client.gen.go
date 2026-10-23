@@ -67,16 +67,13 @@ func (e ContentFormat) Valid() bool {
 
 // Defines values for GuidelineBehavior.
 const (
-	GuidelineBehaviorDecline      GuidelineBehavior = "decline"
-	GuidelineBehaviorOfferSupport GuidelineBehavior = "offer_support"
+	GuidelineBehaviorDecline GuidelineBehavior = "decline"
 )
 
 // Valid indicates whether the value is a known member of the GuidelineBehavior enum.
 func (e GuidelineBehavior) Valid() bool {
 	switch e {
 	case GuidelineBehaviorDecline:
-		return true
-	case GuidelineBehaviorOfferSupport:
 		return true
 	default:
 		return false
@@ -85,23 +82,17 @@ func (e GuidelineBehavior) Valid() bool {
 
 // Defines values for GuidelineCategory.
 const (
-	GuidelineCategoryIllicit   GuidelineCategory = "illicit"
+	GuidelineCategoryNsfw      GuidelineCategory = "nsfw"
 	GuidelineCategoryProfanity GuidelineCategory = "profanity"
-	GuidelineCategorySelfHarm  GuidelineCategory = "self_harm"
-	GuidelineCategorySexual    GuidelineCategory = "sexual"
 	GuidelineCategoryViolence  GuidelineCategory = "violence"
 )
 
 // Valid indicates whether the value is a known member of the GuidelineCategory enum.
 func (e GuidelineCategory) Valid() bool {
 	switch e {
-	case GuidelineCategoryIllicit:
+	case GuidelineCategoryNsfw:
 		return true
 	case GuidelineCategoryProfanity:
-		return true
-	case GuidelineCategorySelfHarm:
-		return true
-	case GuidelineCategorySexual:
 		return true
 	case GuidelineCategoryViolence:
 		return true
@@ -2473,10 +2464,8 @@ type GroupByAggregate1 struct {
 
 // Guideline One entry in [`ChatRequest::guidelines`] and [`ModelRequest::guidelines`].
 //
-// `type` must be `policy`. Each `category` may appear at most once, and
-// `behavior` must be one that category supports: `decline` for `sexual`,
-// `violence`, `illicit`, and `profanity`; `decline` or `offer_support` for
-// `self_harm`.
+// `type` must be `policy`. Each `category` may appear at most once, and every
+// category accepts `decline`.
 type Guideline struct {
 	// Behavior How the model should handle a [`GuidelineCategory`].
 	Behavior GuidelineBehavior `json:"behavior"`

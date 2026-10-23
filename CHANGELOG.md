@@ -2,6 +2,14 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.0, 2026-10-23
+
+- Removed the `GuidelineBehaviorOfferSupport` constant. `GuidelineBehavior` now has only `GuidelineBehaviorDecline`, and `GuidelineBehavior.Valid` returns false for "offer_support".
+- Removed the `GuidelineCategoryIllicit`, `GuidelineCategorySelfHarm` and `GuidelineCategorySexual` constants. `GuidelineCategory.Valid` returns false for "illicit", "self_harm" and "sexual".
+- Added `GuidelineCategoryNsfw` ("nsfw"). `GuidelineCategory` is now `nsfw`, `profanity` and `violence`.
+- `Guideline` doc comment now says every category accepts `decline`.
+- The upstream spec version is unknown for this regeneration.
+
 ## v0.1.5, 2026-10-22
 
 - `ImageOutput.UploadUrls` doc comment now says Azure Blob SAS URLs also get an `x-ms-blob-type: BlockBlob` header on the PUT.
