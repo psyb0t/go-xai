@@ -12,7 +12,7 @@ Unofficial Go client for the xAI (Grok) REST API, generated from xAI's OpenAPI d
 
 ## Stack
 
-- Go 1.26.9, one package `xai` at the module root.
+- Go 1.26.10, one package `xai` at the module root.
 - oapi-codegen v2 as a Go tool dependency, `github.com/oapi-codegen/runtime` at runtime.
 - Tests: `testify` and `net/http/httptest`.
 
