@@ -67,12 +67,15 @@ func (e ContentFormat) Valid() bool {
 
 // Defines values for GuidelineBehavior.
 const (
+	GuidelineBehaviorAllow   GuidelineBehavior = "allow"
 	GuidelineBehaviorDecline GuidelineBehavior = "decline"
 )
 
 // Valid indicates whether the value is a known member of the GuidelineBehavior enum.
 func (e GuidelineBehavior) Valid() bool {
 	switch e {
+	case GuidelineBehaviorAllow:
+		return true
 	case GuidelineBehaviorDecline:
 		return true
 	default:
@@ -82,6 +85,7 @@ func (e GuidelineBehavior) Valid() bool {
 
 // Defines values for GuidelineCategory.
 const (
+	GuidelineCategoryCyber     GuidelineCategory = "cyber"
 	GuidelineCategoryNsfw      GuidelineCategory = "nsfw"
 	GuidelineCategoryProfanity GuidelineCategory = "profanity"
 	GuidelineCategoryViolence  GuidelineCategory = "violence"
@@ -90,6 +94,8 @@ const (
 // Valid indicates whether the value is a known member of the GuidelineCategory enum.
 func (e GuidelineCategory) Valid() bool {
 	switch e {
+	case GuidelineCategoryCyber:
+		return true
 	case GuidelineCategoryNsfw:
 		return true
 	case GuidelineCategoryProfanity:
@@ -2464,8 +2470,8 @@ type GroupByAggregate1 struct {
 
 // Guideline One entry in [`ChatRequest::guidelines`] and [`ModelRequest::guidelines`].
 //
-// `type` must be `policy`. Each `category` may appear at most once, and every
-// category accepts `decline`.
+// `type` must be `policy`. Each `category` may appear at most once. `nsfw`,
+// `violence`, and `profanity` accept `decline`; `cyber` accepts `allow`.
 type Guideline struct {
 	// Behavior How the model should handle a [`GuidelineCategory`].
 	Behavior GuidelineBehavior `json:"behavior"`
