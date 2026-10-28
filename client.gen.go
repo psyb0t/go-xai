@@ -278,6 +278,21 @@ func (e IncompleteDetails2Reason) Valid() bool {
 	}
 }
 
+// Defines values for IncompleteDetails3Reason.
+const (
+	IncompleteDetails3ReasonContentFilter IncompleteDetails3Reason = "content_filter"
+)
+
+// Valid indicates whether the value is a known member of the IncompleteDetails3Reason enum.
+func (e IncompleteDetails3Reason) Valid() bool {
+	switch e {
+	case IncompleteDetails3ReasonContentFilter:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for Message0Role.
 const (
 	Message0RoleSystem Message0Role = "system"
@@ -2697,6 +2712,14 @@ type IncompleteDetails2 struct {
 
 // IncompleteDetails2Reason defines model for IncompleteDetails.2.Reason.
 type IncompleteDetails2Reason string
+
+// IncompleteDetails3 defines model for IncompleteDetails.3.
+type IncompleteDetails3 struct {
+	Reason IncompleteDetails3Reason `json:"reason"`
+}
+
+// IncompleteDetails3Reason defines model for IncompleteDetails.3.Reason.
+type IncompleteDetails3Reason string
 
 // InputItemEntry A single entry in the input items list, wrapping a `ModelInputPart` with an ID.
 type InputItemEntry struct {
@@ -6040,6 +6063,32 @@ func (t *IncompleteDetails) FromIncompleteDetails2(v IncompleteDetails2) error {
 
 // MergeIncompleteDetails2 performs a merge with any union data inside the IncompleteDetails, using the provided IncompleteDetails2
 func (t *IncompleteDetails) MergeIncompleteDetails2(v IncompleteDetails2) error {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	merged, err := runtime.JSONMerge(t.union, b)
+	t.union = merged
+	return err
+}
+
+// AsIncompleteDetails3 returns the union data inside the IncompleteDetails as a IncompleteDetails3
+func (t IncompleteDetails) AsIncompleteDetails3() (IncompleteDetails3, error) {
+	var body IncompleteDetails3
+	err := json.Unmarshal(t.union, &body)
+	return body, err
+}
+
+// FromIncompleteDetails3 overwrites any union data inside the IncompleteDetails as the provided IncompleteDetails3
+func (t *IncompleteDetails) FromIncompleteDetails3(v IncompleteDetails3) error {
+	b, err := json.Marshal(v)
+	t.union = b
+	return err
+}
+
+// MergeIncompleteDetails3 performs a merge with any union data inside the IncompleteDetails, using the provided IncompleteDetails3
+func (t *IncompleteDetails) MergeIncompleteDetails3(v IncompleteDetails3) error {
 	b, err := json.Marshal(v)
 	if err != nil {
 		return err

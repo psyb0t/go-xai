@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.3, 2026-10-28
+
+- Added `IncompleteDetails3` with a `Reason` field of the new type `IncompleteDetails3Reason`. `IncompleteDetails3ReasonContentFilter` ("content_filter") is its only value, and `IncompleteDetails3Reason.Valid` returns true for it.
+- Added the `IncompleteDetails` union accessors `AsIncompleteDetails3`, `FromIncompleteDetails3` and `MergeIncompleteDetails3`.
+- The upstream spec version is unknown for this regeneration.
+
 ## v0.2.2, 2026-10-27
 
 - Added `GuidelineBehaviorAllow` ("allow"). `GuidelineBehavior` now has `allow` and `decline`, and `GuidelineBehavior.Valid` returns true for "allow".
