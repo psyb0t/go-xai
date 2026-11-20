@@ -2,6 +2,12 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.4, 2026-11-20
+
+- The `go` line in `go.mod` moves from 1.26.10 to 1.26.11, so building the module needs Go 1.26.11 or newer. Go 1.26.10 ships a `net/http` vulnerability (GO-2026-6859) that govulncheck reported.
+- `Dockerfile.dev` now uses `golang:1.26.11-trixie` at its new digest, and the agent skill setup reference names Go 1.26.11.
+- No field, method or type changed.
+
 ## v0.2.3, 2026-10-28
 
 - Added `IncompleteDetails3` with a `Reason` field of the new type `IncompleteDetails3Reason`. `IncompleteDetails3ReasonContentFilter` ("content_filter") is its only value, and `IncompleteDetails3Reason.Valid` returns true for it.
